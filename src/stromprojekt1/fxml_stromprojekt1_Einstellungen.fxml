@@ -43,5 +43,6 @@
     <TextField layoutX="249.0" layoutY="190.0" prefWidth="200.0" />
     <Button layoutX="249.0" layoutY="221.0" mnemonicParsing="false" text="Abbrechen" />
     <Button layoutX="365.0" layoutY="221.0" mnemonicParsing="false" text="Speichern" />
+    <Label layoutX="166.0" layoutY="329.0" text="Führerschein" />
   </children>
 </AnchorPane>
