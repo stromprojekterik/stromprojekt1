@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="589.0" xmlns:fx="http://javafx.com/fxml" fx:controller="stromprojekt1.Stromprojekt1Controller">
+  <children>
+    <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
+    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="S" />
+    <Button layoutX="51.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="H" />
+    <Button layoutX="89.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="L" />
+    <ComboBox layoutX="141.0" layoutY="14.0" prefWidth="165.0" promptText="Konfigurationsmenü">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Button layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonActionBarChart" text="Akt." />
+    <Button layoutX="449.0" layoutY="14.0" mnemonicParsing="false" text="?" />
+    <Button layoutX="481.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Einstellungen" />
+    <BarChart fx:id="barchart" layoutX="45.0" layoutY="60.0">
+      <xAxis>
+        <CategoryAxis side="BOTTOM">
+          <categories>
+            <FXCollections fx:factory="observableArrayList" />
+          </categories>
+        </CategoryAxis>
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT" />
+      </yAxis>
+    </BarChart>
+    <ScrollBar layoutX="89.0" layoutY="460.0" prefWidth="442.0" />
+  </children>
+</AnchorPane>

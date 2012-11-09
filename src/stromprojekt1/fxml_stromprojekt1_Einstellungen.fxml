@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="stromprojekt1.Stromprojekt1Controller">
+  <children>
+    <Label layoutX="43.0" layoutY="21.0" text="ProfilName" />
+    <TextField layoutX="245.0" layoutY="18.0" prefWidth="200.0" />
+    <Label layoutX="43.0" layoutY="43.0" text="Input &amp; Output" />
+    <Label layoutX="67.0" layoutY="63.0" text="- Intervall" />
+    <Label layoutX="283.0" layoutY="63.0" text="minuten" />
+    <Label layoutX="398.0" layoutY="63.0" text="sekunden" />
+    <Label layoutX="70.0" layoutY="85.0" text="Verzeichnis Input" />
+    <Label layoutX="70.0" layoutY="109.0" text="Verzeichnis Output" />
+    <Label layoutX="44.0" layoutY="126.0" text="Anzeige" />
+    <Label layoutX="70.0" layoutY="149.0" text="Start" />
+    <Label layoutX="70.0" layoutY="169.0" text="Ende" />
+    <Label layoutX="70.0" layoutY="193.0" text="dynamisches Zeitraum" />
+    <TextField layoutX="245.0" layoutY="60.0" prefWidth="38.0" />
+    <TextField layoutX="361.0" layoutY="57.0" prefWidth="38.0" />
+    <TextField layoutX="245.0" layoutY="79.0" prefWidth="200.0" />
+    <TextField layoutX="245.0" layoutY="106.0" prefWidth="200.0" />
+    <Button layoutX="452.0" layoutY="80.0" mnemonicParsing="false" text="Button" />
+    <Button layoutX="452.0" layoutY="106.0" mnemonicParsing="false" text="Button" />
+    <TextField layoutX="249.0" layoutY="143.0" prefWidth="38.0" />
+    <TextField layoutX="311.0" layoutY="143.0" prefWidth="38.0" />
+    <TextField layoutX="365.0" layoutY="143.0" prefWidth="38.0" />
+    <Label layoutX="287.0" layoutY="146.0" text="d" />
+    <Label layoutX="349.0" layoutY="146.0" text="m" />
+    <Label layoutX="403.0" layoutY="146.0" text="y" />
+    <Label layoutX="403.0" layoutY="169.0" text="y" />
+    <TextField layoutX="249.0" layoutY="166.0" prefWidth="38.0" />
+    <TextField layoutX="311.0" layoutY="166.0" prefWidth="38.0" />
+    <Label layoutX="349.0" layoutY="169.0" text="m" />
+    <Label layoutX="287.0" layoutY="169.0" text="d" />
+    <TextField layoutX="365.0" layoutY="166.0" prefWidth="38.0" />
+    <TextField layoutX="249.0" layoutY="190.0" prefWidth="200.0" />
+    <Button layoutX="249.0" layoutY="221.0" mnemonicParsing="false" text="Abbrechen" />
+    <Button layoutX="365.0" layoutY="221.0" mnemonicParsing="false" text="Speichern" />
+  </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="stromprojekt1.Stromprojekt1Controller">
+  <children>
+    <Label layoutX="43.0" layoutY="21.0" text="ProfilName" />
+    <TextField layoutX="245.0" layoutY="15.0" prefWidth="200.0" />
+    <Label layoutX="43.0" layoutY="43.0" text="Input &amp; Output" />
+    <Label layoutX="67.0" layoutY="63.0" text="- Intervall" />
+    <Label layoutX="203.0" layoutY="63.0" text="Label" />
+    <Label layoutX="360.0" layoutY="63.0" text="Label" />
+    <Label layoutX="70.0" layoutY="85.0" text="Label" />
+    <Label layoutX="70.0" layoutY="109.0" text="Label" />
+    <Label layoutX="44.0" layoutY="126.0" text="Anzeige" />
+    <Label layoutX="70.0" layoutY="149.0" text="Label" />
+    <Label layoutX="70.0" layoutY="169.0" text="Label" />
+    <Label layoutX="70.0" layoutY="186.0" text="Label" />
+    <Label layoutX="70.0" layoutY="208.0" text="Label" />
+  </children>
+</AnchorPane>
