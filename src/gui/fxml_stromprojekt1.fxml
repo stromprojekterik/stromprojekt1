@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="589.0" xmlns:fx="http://javafx.com/fxml" fx:controller="stromprojekt1.Stromprojekt1Controller">
+<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="589.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.Stromprojekt1Controller">
   <children>
     <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="S" />
