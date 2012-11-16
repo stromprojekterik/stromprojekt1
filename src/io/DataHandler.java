@@ -102,14 +102,16 @@ public class DataHandler {
 		InputStream is = url.openStream();
 		DataInputStream dis = new DataInputStream(new BufferedInputStream(is));
 		
-		String tmp="",line;
+
+		String line;
+		StringBuffer tmp = new StringBuffer();
 		int i=0;
 		while ((line = dis.readLine()) != null) {
-			tmp +=line;
+			tmp.append(line);
 			if((++i)>10)break;
 	    }
+		JOptionPane.showMessageDialog(null, tmp.toString(),"Ausgabe", JOptionPane.INFORMATION_MESSAGE);
 		
-		JOptionPane.showMessageDialog(null, tmp,"Ausgabe", JOptionPane.INFORMATION_MESSAGE);
 		
 		//TODO ADD dynamic Datas
 		
@@ -165,6 +167,8 @@ public class DataHandler {
 		}
 	}	
 	
+	
+	@Override
 	public String toString(){
 		String tmp="";
 		for (Iterator<StromWert> iterator = DataHolder.iterator(); iterator.hasNext();) {

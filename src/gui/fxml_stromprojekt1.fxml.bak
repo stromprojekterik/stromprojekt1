@@ -8,24 +8,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="589.0" xmlns:fx="http://javafx.com/fxml" fx:controller="stromprojekt1.Stromprojekt1Controller">
+<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="589.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.Stromprojekt1Controller">
   <children>
     <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="S" />
     <Button layoutX="51.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="H" />
     <Button layoutX="89.0" layoutY="14.0" mnemonicParsing="false" prefWidth="30.0" text="L" />
-    <ComboBox layoutX="141.0" layoutY="14.0" prefWidth="165.0" promptText="Konfigurationsmenü">
+    <ComboBox fx:id="configMenu" layoutX="126.0" layoutY="14.0" onAction="#handelChangeButtonProfil" prefWidth="128.0" promptText="Konfigurationsmenü">
       <items>
         <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
+          <String fx:value="letzte 60 Minuten" />
+          <String fx:value="letzte 24 Stunden" />
+          <String fx:value="letzte 7 Tage" />
+          <String fx:value="letzte 31 Tage" />
+          <String fx:value="letzte 365 Tage" />
+          <String fx:value="heutiger Tag" />
         </FXCollections>
       </items>
     </ComboBox>
-    <Button layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonActionBarChart" text="Akt." />
+    <Button layoutX="257.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonActionBarChart" text="Akt." />
     <Button layoutX="449.0" layoutY="14.0" mnemonicParsing="false" text="?" />
-    <Button layoutX="481.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Einstellungen" />
+    <Button fx:id="einstellungen" layoutX="481.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Einstellungen" />
     <BarChart fx:id="barchart" layoutX="45.0" layoutY="60.0">
       <xAxis>
         <CategoryAxis side="BOTTOM">
@@ -39,5 +42,7 @@
       </yAxis>
     </BarChart>
     <ScrollBar layoutX="89.0" layoutY="460.0" prefWidth="442.0" />
+    <Button layoutX="302.0" layoutY="14.0" mnemonicParsing="false" text="Leistung" />
+    <Button layoutX="369.0" layoutY="14.0" mnemonicParsing="false" text="Jahreprogn." />
   </children>
 </AnchorPane>

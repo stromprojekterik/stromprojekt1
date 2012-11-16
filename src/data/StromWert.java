@@ -25,19 +25,16 @@ public class StromWert {
 	
 	public void setWert_edit(float wert_edit) {
 		edited=true;
-		this.wert_edit = wert_edit;
+		this.wert_edit = wert_edit; //FIXME Typsicherheit
 	}
 	
 	public Date getZeitpunkt() {
 		return zeitpunkt;
 	}
 	
-	public float getWert_orgi() {
+	public float getWert(){
+		if(edited) return wert_edit;
 		return wert_orgi;
-	}
-	
-	public float getWert_edit() {
-		return wert_edit;
 	}
 	
 	public int getStatus() {
@@ -46,5 +43,10 @@ public class StromWert {
 	
 	public boolean isEdited() {
 		return edited;
+	}
+	
+	@Override
+	public String toString() {
+		return zeitpunkt+";"+wert_orgi+";"+wert_edit+";"+status;
 	}
 }

@@ -25,6 +25,7 @@ public class Stromprojekt1 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("fxml_stromprojekt1.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Stromprojekt Hauptmenü");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
