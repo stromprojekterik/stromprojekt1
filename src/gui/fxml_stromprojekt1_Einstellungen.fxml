@@ -22,7 +22,7 @@
     <Label layoutX="70.0" layoutY="149.0" text="Start" />
     <Label layoutX="70.0" layoutY="169.0" text="Ende" />
     <Label layoutX="70.0" layoutY="193.0" text="dynamisches Zeitraum" />
-    <TextField layoutX="245.0" layoutY="60.0" prefWidth="38.0" />
+    <TextField layoutX="245.0" layoutY="57.0" prefWidth="38.0" />
     <TextField layoutX="361.0" layoutY="57.0" prefWidth="38.0" />
     <TextField layoutX="245.0" layoutY="79.0" prefWidth="200.0" />
     <TextField layoutX="245.0" layoutY="106.0" prefWidth="200.0" />
