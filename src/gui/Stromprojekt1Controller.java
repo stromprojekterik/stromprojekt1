@@ -9,6 +9,8 @@ import io.DataHandler;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -74,8 +76,14 @@ public class Stromprojekt1Controller implements Initializable{
     
     @FXML protected void handelChangeButtonProfil (ActionEvent event) throws Exception {
     	String config=(((ComboBox<String>)event.getSource()).getSelectionModel().selectedItemProperty()).getValue();
+    	Calendar myCal2 = new GregorianCalendar();
+		
+    	//System.out.println( date + ".");
     	switch (config){
     	case "heutiger Tag":
+    		int date = myCal2.get( Calendar.DATE  );
+    		int year = myCal2.get( Calendar.YEAR  );
+    		int month = myCal2.get( Calendar.MONTH ) + 1; 
     		DataHandler test1 = new DataHandler();
         	
         	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
@@ -86,7 +94,7 @@ public class Stromprojekt1Controller implements Initializable{
             barchart.getData().add(series1);
             
             Iterator<StromWert> it = test1.getDataHolder().iterator();
-            Date jetzt= new Date(10,11,2012,15,17,37);
+            Date jetzt= new Date(date,month,year,0,0,0);
             
             while (it.hasNext()) {
     			StromWert stromwert = it.next();
