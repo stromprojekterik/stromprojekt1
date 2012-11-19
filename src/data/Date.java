@@ -98,20 +98,20 @@ public class Date {
 			nday = nday - aryDays[nmonth];
 			nmonth++;
 			
-			if(!checkDate(1, nmonth, nyear, hour, day, second)){
+			if(!checkDate(1, nmonth, nyear, hour, minute, second)){
 				nmonth=1;
 				nyear++;
 			}
-			else if(!checkDate(nday, nmonth, nyear, hour, day, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+			else if(!checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
 		}
 		while(nday<=0){			
 			nmonth--;			
-			if(!checkDate(1, nmonth, nyear, hour, day, second)){
+			if(!checkDate(1, nmonth, nyear, hour, minute, second)){
 				nmonth=12;
 				nyear--;
 			}
 			nday = aryDays[nmonth]+nday;
-			if(!checkDate(nday, nmonth, nyear, hour, day, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+			if(!checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
 		}
 		return null;
 	}
