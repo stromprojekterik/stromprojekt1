@@ -94,7 +94,7 @@ public class Date {
 		int nmonth = month;
 		int nyear = year;
 		
-		while(nday<aryDays[nmonth]){
+		while(nday>aryDays[nmonth]){
 			nday = nday - aryDays[nmonth];
 			nmonth++;
 			
@@ -102,7 +102,7 @@ public class Date {
 				nmonth=1;
 				nyear++;
 			}
-			else if(!checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+			 if(checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
 		}
 		while(nday<=0){			
 			nmonth--;			
@@ -111,8 +111,8 @@ public class Date {
 				nyear--;
 			}
 			nday = aryDays[nmonth]+nday;
-			if(!checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+			if(checkDate(nday, nmonth, nyear, hour, minute, second))return new Date(nday, nmonth, nyear, hour, minute, second);
 		}
-		return null;
+		return new Date(nday, nmonth, nyear, hour, minute, second);
 	}
 }

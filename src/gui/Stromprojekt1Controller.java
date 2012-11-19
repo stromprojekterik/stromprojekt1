@@ -84,8 +84,13 @@ public class Stromprojekt1Controller implements Initializable{
 		int second = today.get(Calendar.SECOND);
 		int hour = today.get(Calendar.HOUR_OF_DAY);
 		Date heute= new Date(date,month,year,hour,minute,second);
+		Date jetzt= new Date(date,month,year,0,0,0);
 		DataHandler test1 = new DataHandler();
     	
+		String str = JOptionPane.showInputDialog("GIB ZAHL EIN");
+		int temp = Integer.parseInt(str);
+		System.out.println(temp);
+		
     	switch (config){
     	case "heutiger Tag":
     		
@@ -98,12 +103,13 @@ public class Stromprojekt1Controller implements Initializable{
             barchart.getData().add(series1);
             
             Iterator<StromWert> it = test1.getDataHolder().iterator();
-            Date jetzt= new Date(date,month,year,0,0,0);
+            
             
             while (it.hasNext()) {
     			StromWert stromwert = it.next();
     			if (!stromwert.getZeitpunkt().isBefore(jetzt))series1.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             }
+            break;
     	case "letzte 7 Tage":
     		int x=7;
     		
@@ -120,8 +126,11 @@ public class Stromprojekt1Controller implements Initializable{
             
             while (it2.hasNext()) {
     			StromWert stromwert = it2.next();
+    			
+    			
     			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             }
+            break;
     	}
     }
     
