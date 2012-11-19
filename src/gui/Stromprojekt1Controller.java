@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import data.Date;
 import data.StromWert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 /**
  *
  * @author Administrator
@@ -55,7 +57,7 @@ public class Stromprojekt1Controller implements Initializable{
     @FXML protected void handleSubmitButtonActionBarChart (ActionEvent event) throws Exception {
     	DataHandler test = new DataHandler();
     	
-    	test.setFile(new File("C:\\Users\\Tim\\Desktop\\export01.txt"));
+    	test.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
     	test.readExportTxt();
     	
         XYChart.Series<String, Float> series1 = new XYChart.Series();
@@ -70,8 +72,28 @@ public class Stromprojekt1Controller implements Initializable{
     }
     
     
-    @FXML protected void handelChangeButtonProfil (ActionEvent event){
-    	(((ComboBox<String>)event.getSource()).getSelectionModel().selectedItemProperty()).getValue();
+    @FXML protected void handelChangeButtonProfil (ActionEvent event) throws Exception {
+    	String config=(((ComboBox<String>)event.getSource()).getSelectionModel().selectedItemProperty()).getValue();
+    	switch (config){
+    	case "heutiger Tag":
+    		DataHandler test1 = new DataHandler();
+        	
+        	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
+        	test1.readExportTxt();
+        	
+            XYChart.Series<String, Float> series1 = new XYChart.Series();
+//            series1.setName("XYChart.Series 1");
+            barchart.getData().add(series1);
+            
+            Iterator<StromWert> it = test1.getDataHolder().iterator();
+            Date jetzt= new Date(10,11,2012,15,17,37);
+            
+            while (it.hasNext()) {
+    			StromWert stromwert = it.next();
+    			if (!stromwert.getZeitpunkt().isBefore(jetzt))series1.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
+            }
+            
+    	}
     }
     
     @FXML protected void handelSubmitButton(ActionEvent event) throws IOException{

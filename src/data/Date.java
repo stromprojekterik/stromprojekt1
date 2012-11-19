@@ -85,4 +85,34 @@ public class Date {
 		return bfor;
 	}
 	
+	public Date calcDay(int a) throws IlligalDateException{ 
+		//		  Ja,Fe,Ma,Ap,Ma,Ju,Ju,Au,Se,Ok,No,De;
+		int[] aryDays = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		if(year%400==0 || (year%4==0 && year%100!=0 ))aryDays[2]=29;
+		
+		int nday = day + a;
+		int nmonth = month;
+		int nyear = year;
+		
+		while(nday<aryDays[nmonth]){
+			nday = nday - aryDays[nmonth];
+			nmonth++;
+			
+			if(!checkDate(1, nmonth, nyear, hour, day, second)){
+				nmonth=1;
+				nyear++;
+			}
+			else if(!checkDate(nday, nmonth, nyear, hour, day, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+		}
+		while(nday<=0){			
+			nmonth--;			
+			if(!checkDate(1, nmonth, nyear, hour, day, second)){
+				nmonth=12;
+				nyear--;
+			}
+			nday = aryDays[nmonth]+nday;
+			if(!checkDate(nday, nmonth, nyear, hour, day, second))return new Date(nday, nmonth, nyear, hour, minute, second);
+		}
+		return null;
+	}
 }
