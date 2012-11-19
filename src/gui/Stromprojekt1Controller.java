@@ -76,15 +76,19 @@ public class Stromprojekt1Controller implements Initializable{
     
     @FXML protected void handelChangeButtonProfil (ActionEvent event) throws Exception {
     	String config=(((ComboBox<String>)event.getSource()).getSelectionModel().selectedItemProperty()).getValue();
-    	Calendar myCal2 = new GregorianCalendar();
-		
-    	//System.out.println( date + ".");
+    	Calendar today = new GregorianCalendar();
+    	int date = today.get( Calendar.DATE  );
+		int year = today.get( Calendar.YEAR  );
+		int month = today.get( Calendar.MONTH ) + 1; 
+		int minute = today.get(Calendar.MINUTE);
+		int second = today.get(Calendar.SECOND);
+		int hour = today.get(Calendar.HOUR_OF_DAY);
+		Date heute= new Date(date,month,year,hour,minute,second);
+		DataHandler test1 = new DataHandler();
+    	
     	switch (config){
     	case "heutiger Tag":
-    		int date = myCal2.get( Calendar.DATE  );
-    		int year = myCal2.get( Calendar.YEAR  );
-    		int month = myCal2.get( Calendar.MONTH ) + 1; 
-    		DataHandler test1 = new DataHandler();
+    		
         	
         	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
         	test1.readExportTxt();
@@ -100,7 +104,24 @@ public class Stromprojekt1Controller implements Initializable{
     			StromWert stromwert = it.next();
     			if (!stromwert.getZeitpunkt().isBefore(jetzt))series1.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             }
+    	case "letzte 7 Tage":
+    		int x=7;
+    		
+    		//!zeitpunkt.isBefore(heute.calc(-x))
+        	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
+        	test1.readExportTxt();
+        	
+            XYChart.Series<String, Float> series2 = new XYChart.Series();
+//            series1.setName("XYChart.Series 1");
+            barchart.getData().add(series2);
             
+            Iterator<StromWert> it2 = test1.getDataHolder().iterator();
+            
+            
+            while (it2.hasNext()) {
+    			StromWert stromwert = it2.next();
+    			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
+            }
     	}
     }
     
