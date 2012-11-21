@@ -31,7 +31,7 @@
     <Button fx:id="einstellungen" layoutX="481.0" layoutY="14.0" mnemonicParsing="false" onAction="#handelSubmitButton" text="Einstellungen" />
     <Button layoutX="302.0" layoutY="14.0" mnemonicParsing="false" text="Leistung" />
     <Button layoutX="369.0" layoutY="14.0" mnemonicParsing="false" text="Jahreprogn." />
-    <LineChart id="LineChart" fx:id="barchart" layoutX="14.0" layoutY="48.0" prefHeight="392.0" prefWidth="550.0">
+    <LineChart id="LineChart" fx:id="linechart" layoutX="14.0" layoutY="48.0" prefHeight="392.0" prefWidth="550.0">
       <xAxis>
         <CategoryAxis side="BOTTOM">
           <categories>
