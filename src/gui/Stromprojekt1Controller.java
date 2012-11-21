@@ -23,20 +23,26 @@ import data.StromWert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 /**
@@ -46,12 +52,12 @@ import javafx.scene.chart.XYChart.Series;
 public class Stromprojekt1Controller implements Initializable{
     
 	   @FXML private Text actiontarget;
-	   @FXML private BarChart barchart;
+	   @FXML private LineChart barchart;
 	   @FXML private Button input;
 	   @FXML private Button output;
 	   @FXML private TextField inputTextField;
 	   @FXML private TextField outputTextField;	   
-	   
+	   @FXML public ScrollBar scrollbar;
 	   
 	   
 	   
@@ -112,7 +118,7 @@ public class Stromprojekt1Controller implements Initializable{
             break;
     	case "letzte 7 Tage":
     		int x=7;
-    		
+    		int i=0;
     		//!zeitpunkt.isBefore(heute.calc(-x))
         	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
         	test1.readExportTxt();
@@ -123,14 +129,22 @@ public class Stromprojekt1Controller implements Initializable{
             
             Iterator<StromWert> it2 = test1.getDataHolder().iterator();
             
+            	while (it2.hasNext()&& i<25){
+            		
+            	
+            	StromWert stromwert = it2.next();
+    			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
+            	i++;
+            	}
+            	break;
             
-            while (it2.hasNext()) {
+            /*while (it2.hasNext()) {
     			StromWert stromwert = it2.next();
     			
     			
     			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             }
-            break;
+            break;*/
     	}
     }
     
@@ -145,6 +159,7 @@ public class Stromprojekt1Controller implements Initializable{
 		    stage.setTitle("Stromprojekt Einstellungen");
 		    stage.setScene(new Scene(root));
 		    stage.show();
+		    
 		    break;
 		case "saveConfig": saveConfig(event); break;
 		default:
@@ -173,6 +188,23 @@ public class Stromprojekt1Controller implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	/*try {
+			 final VBox root1 = FXMLLoader.load(getClass().getResource("fxml_stromprojekt1.fxml"));
+			scrollbar.setValue(10);
+	    	scrollbar.valueProperty().addListener(new ChangeListener<Number>() {
+	            public void changed(ObservableValue<? extends Number> ov,
+	                    Number old_val, Number new_val) {
+	                        root1.setLayoutX(-new_val.doubleValue());
+	                }
+	        // TODO
+	    } ) ; 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	*/
+    	
         // TODO
-    }    
+    
+    }
 }

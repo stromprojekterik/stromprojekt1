@@ -29,7 +29,9 @@
     <Button layoutX="257.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSubmitButtonActionBarChart" text="Akt." />
     <Button layoutX="449.0" layoutY="14.0" mnemonicParsing="false" text="?" />
     <Button fx:id="einstellungen" layoutX="481.0" layoutY="14.0" mnemonicParsing="false" onAction="#handelSubmitButton" text="Einstellungen" />
-    <BarChart fx:id="barchart" layoutX="45.0" layoutY="60.0">
+    <Button layoutX="302.0" layoutY="14.0" mnemonicParsing="false" text="Leistung" />
+    <Button layoutX="369.0" layoutY="14.0" mnemonicParsing="false" text="Jahreprogn." />
+    <LineChart id="LineChart" fx:id="barchart" layoutX="14.0" layoutY="48.0" prefHeight="392.0" prefWidth="550.0">
       <xAxis>
         <CategoryAxis side="BOTTOM">
           <categories>
@@ -40,9 +42,6 @@
       <yAxis>
         <NumberAxis side="LEFT" />
       </yAxis>
-    </BarChart>
-    <ScrollBar layoutX="89.0" layoutY="460.0" prefWidth="442.0" />
-    <Button layoutX="302.0" layoutY="14.0" mnemonicParsing="false" text="Leistung" />
-    <Button layoutX="369.0" layoutY="14.0" mnemonicParsing="false" text="Jahreprogn." />
+    </LineChart>
   </children>
 </AnchorPane>
