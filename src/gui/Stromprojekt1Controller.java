@@ -52,7 +52,7 @@ import javafx.scene.chart.XYChart.Series;
 public class Stromprojekt1Controller implements Initializable{
     
 	   @FXML private Text actiontarget;
-	   @FXML private LineChart barchart;
+	   @FXML private LineChart linechart;
 	   @FXML private Button input;
 	   @FXML private Button output;
 	   @FXML private TextField inputTextField;
@@ -70,7 +70,7 @@ public class Stromprojekt1Controller implements Initializable{
     	
         XYChart.Series<String, Float> series1 = new XYChart.Series();
 //        series1.setName("XYChart.Series 1");
-        barchart.getData().add(series1);
+        linechart.getData().add(series1);
         
         Iterator<StromWert> it = test.getDataHolder().iterator();
         while (it.hasNext()) {
@@ -106,7 +106,7 @@ public class Stromprojekt1Controller implements Initializable{
         	
             XYChart.Series<String, Float> series1 = new XYChart.Series();
 //            series1.setName("XYChart.Series 1");
-            barchart.getData().add(series1);
+            linechart.getData().add(series1);
             
             Iterator<StromWert> it = test1.getDataHolder().iterator();
             
@@ -118,23 +118,23 @@ public class Stromprojekt1Controller implements Initializable{
             break;
     	case "letzte 7 Tage":
     		int x=7;
-    		int i=0;
+    		
     		//!zeitpunkt.isBefore(heute.calc(-x))
         	test1.setFile(new File("C:\\Dokumente und Einstellungen\\Administrator\\Eigene Dateien\\Dropbox\\Powermeter\\export01.txt"));
         	test1.readExportTxt();
         	
             XYChart.Series<String, Float> series2 = new XYChart.Series();
 //            series1.setName("XYChart.Series 1");
-            barchart.getData().add(series2);
+            linechart.getData().add(series2);
             
             Iterator<StromWert> it2 = test1.getDataHolder().iterator();
             
-            	while (it2.hasNext()&& i<25){
+            	while (it2.hasNext()){
             		
             	
             	StromWert stromwert = it2.next();
     			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
-            	i++;
+            	
             	}
             	break;
             
@@ -206,5 +206,29 @@ public class Stromprojekt1Controller implements Initializable{
     	
         // TODO
     
+    }
+    
+    private LinkedList<StromWert> verringernDerWerte(LinkedList<StromWert> tmp){
+    	int size = tmp.size();
+    	int divider = 2;
+    	while((size%divider)!=0)divider++;
+    	Iterator<StromWert> it = tmp.iterator();
+    	
+    	LinkedList<StromWert> end = new LinkedList<StromWert>();
+    	int tmpDurchschnnitt=0;
+    	Date zeitDurchschnitt=null;
+    	
+    	for(int i=0; i<(size/divider); i++){
+    		for(int j=0; j<divider;j++){
+    			StromWert tmp3 = it.next();
+    			tmpDurchschnnitt+=tmp3.getWert();
+    			if(Math.round(divider/2)==j)zeitDurchschnitt = tmp3.getZeitpunkt();
+    		}
+    		end.add(new StromWert(zeitDurchschnitt, tmpDurchschnnitt/divider, tmpDurchschnnitt/divider, 0));
+    	}
+    	
+    	if(end.size()>100)return verringernDerWerte(end);
+    	
+		return end;
     }
 }
