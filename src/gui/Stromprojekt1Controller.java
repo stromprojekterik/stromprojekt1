@@ -93,11 +93,11 @@ public class Stromprojekt1Controller implements Initializable{
 		Date heute= new Date(date,month,year,hour,minute,second);
 		Date jetzt= new Date(date,month,year,0,0,0);
 		DataHandler test1 = new DataHandler();
-    	
+		
 //		String str = JOptionPane.showInputDialog("GIB ZAHL EIN");
 //		int temp = Integer.parseInt(str);
 //		System.out.println(temp);
-		
+		if(!linechart.getData().isEmpty())linechart.getData().clear();
     	switch (config){
     	case "heutiger Tag":
     		
@@ -113,12 +113,12 @@ public class Stromprojekt1Controller implements Initializable{
             LinkedList<StromWert> tmp = new LinkedList<StromWert>();
             while (it.hasNext()) {
 	            StromWert stromwert = it.next();
-	            System.out.println( stromwert.getWert());
 	            if (!stromwert.getZeitpunkt().isBefore(jetzt))tmp.add(stromwert);
             }
            it = verringernDerWerte(tmp).iterator();
             while (it.hasNext()) {
             	StromWert stromwert = it.next();
+            	System.out.println("Zeitpunkt: "+stromwert.getZeitpunkt());
     			series1.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             }
             break;
@@ -134,15 +134,18 @@ public class Stromprojekt1Controller implements Initializable{
             linechart.getData().add(series2);
             
             Iterator<StromWert> it2 = test1.getDataHolder().iterator();
-            
-            	while (it2.hasNext()){
-            		
-            	
+            LinkedList<StromWert> tmp7 = new LinkedList<StromWert>();
+            while (it2.hasNext()) {
+	            StromWert stromwert = it2.next();
+	            if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))tmp7.add(stromwert);
+            }	
+            it2 = verringernDerWerte(tmp7).iterator();
+            while (it2.hasNext()) {
             	StromWert stromwert = it2.next();
-    			if (!stromwert.getZeitpunkt().isBefore(heute.calcDay(-x)))series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
+            	series2.getData().add(new XYChart.Data(stromwert.getZeitpunkt().toString(), stromwert.getWert()));
             	
             	}
-            	break;
+            break;
             
             /*while (it2.hasNext()) {
     			StromWert stromwert = it2.next();
@@ -237,7 +240,7 @@ public class Stromprojekt1Controller implements Initializable{
     	if(rest==1)end.add(it.next());
     	else if(rest>0)System.out.println("BÄÄM");
     	
-    	if(end.size()>50){
+    	if(end.size()>40){
     		System.out.println("Dividor:"+divider+" Size:"+end.size());
     		return verringernDerWerte(end);
     	}
